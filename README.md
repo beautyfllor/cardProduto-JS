@@ -1,2 +1,1 @@
-# ProdutosJS-ObjectJSON
 # cardProduto-JS
