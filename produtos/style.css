@@ -26,6 +26,9 @@ footer{
 
 .card-container{
     padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .card {

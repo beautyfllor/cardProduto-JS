@@ -1,6 +1,6 @@
 'use strict'
 
-const produtos = [
+const db = [
     {
         id: 1, 
         nome: 'Microfone Kingston', 
@@ -27,5 +27,43 @@ const produtos = [
         preco: 350, 
         parcelamento: 'ou 10x de 35 sem juros',
         imagem: './img/mouse.png'
-    },
+    }
 ]
+
+const definirAvaliacao = (qtdeCheias) => {
+    const qtdeVazias = 5 - qtdeCheias
+
+    return "&starf;".repeat(qtdeCheias) + "&star;".repeat(qtdeVazias)
+}
+
+const criarCard = (produto) => {
+    //Criando o elemento
+    const card = document.createElement('div')
+    //Colocando classe no elemento
+    card.classList.add('card')
+    //Passando o código HTML
+    card.innerHTML = `
+        <div class="card-image-container">
+        <img src="${produto.imagem}" alt="mouse" class="card-image">
+        </div>
+        <span class="card-descricao">${produto.descricao}</span>
+        <span class="card-avaliacao">
+            ${definirAvaliacao(produto.avaliacao)}
+        </span>
+        <span class="card-preco">${produto.preco}</span>
+        <span class="card-parcelamento">${produto.parcelamento}</span>
+    `
+    //Retorna o elemento
+    return card
+}
+
+const carregarProdutos = (produtos) => {
+    const container = document.querySelector('.card-container')
+    const cards = produtos.map(criarCard)
+
+    //Aqui só aceita objeto, array não!
+    container.replaceChildren(...cards)
+    //(...) -> Pega o array e espalha
+}
+
+carregarProdutos(db)
