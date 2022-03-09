@@ -63,7 +63,7 @@ const carregarProdutos = (produtos) => {
 
     //Aqui só aceita objeto, array não!
     container.replaceChildren(...cards)
-    //(...) -> Pega o array e espalha
+    //(...) -> Pega o array e espalha - "desmenbrando"
 }
 
 carregarProdutos(db)
